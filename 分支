@@ -1,0 +1,37 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : 帆软测试
+Source Server Version : 50710
+Source Host           : localhost:3306
+Source Database       : my_db
+
+Target Server Type    : MYSQL
+Target Server Version : 50710
+File Encoding         : 65001
+
+Date: 2021-01-21 08:40:12
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for fact_header_page
+-- ----------------------------
+DROP TABLE IF EXISTS `fact_header_page`;
+CREATE TABLE `fact_header_page` (
+  `cyear` char(4) NOT NULL COMMENT '年度',
+  `cmonth` int(11) NOT NULL COMMENT '月度',
+  `post_no` char(2) NOT NULL COMMENT '流水号',
+  `table_name` char(255) DEFAULT NULL COMMENT '名称',
+  `deadline` char(10) CHARACTER SET latin1 DEFAULT NULL COMMENT '截止时间',
+  `create_by` varchar(500) NOT NULL COMMENT '创建人',
+  `create_id` varchar(500) CHARACTER SET latin1 DEFAULT NULL COMMENT '创建人ID',
+  `create_date` char(19) CHARACTER SET latin1 DEFAULT NULL COMMENT '创建时间',
+  `reserve1` varchar(500) DEFAULT NULL COMMENT '预留字段1',
+  `reserve2` varchar(500) DEFAULT NULL COMMENT '预留字段2',
+  `reserve3` varchar(500) DEFAULT NULL COMMENT '预留字段3',
+  PRIMARY KEY (`cyear`,`cmonth`,`post_no`),
+  KEY `预留字段` (`reserve1`),
+  CONSTRAINT `预留字段` FOREIGN KEY (`reserve1`) REFERENCES `runoob_tbl` (`runoob_title`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='抬头表';
